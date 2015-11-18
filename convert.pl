@@ -7,7 +7,7 @@ use Spreadsheet::ParseExcel;
 use FileHandle;
 use strict;
 
-my $filename = shift || "../up.xls";
+my $filename = shift || "./up.xls";
 my $e = new Spreadsheet::ParseExcel;
 my $eBook = $e->Parse($filename);
 my $sheets = $eBook->{SheetCount};
@@ -112,7 +112,7 @@ my @files = `ls *.csv`;
 foreach my $file (@files){
     chomp($file);
     my @rename = split('\.', $file);
-    my $query = "load data infile '/vagrant/scripts/$file' into table $rename[0] fields terminated by ',' enclosed by '\"' ignore 1 rows";
+    my $query = "load data infile '/vagrant/$file' into table $rename[0] fields terminated by ',' enclosed by '\"' ignore 1 rows";
     print "$file\n";
     #for my $sql($query){
        $dbh->do($query);
