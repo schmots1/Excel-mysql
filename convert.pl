@@ -32,6 +32,9 @@ foreach my $sheet (0 .. $sheets - 1) {
     }
 $fh->close();
 }
+#
+#removes comans from the end of lines
+#
 my $dir;
 my $ENV;
 $dir = $ENV{"PWD"};
@@ -54,7 +57,7 @@ while (my $FILE = readdir(DIR)) {
 	close (NEW);
 }
 
-
+print `rm *.bak`;
 my $dir = ".";
 
 opendir(DIR, $dir) || die "Can't open $dir\n";
@@ -118,5 +121,4 @@ foreach my $file (@files){
        $dbh->do($query);
     #}
 }
-print `rm *.bak`;
 print `rm *.csv`;
