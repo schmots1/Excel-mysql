@@ -10,6 +10,7 @@ Vagrant http://www.vagrantup.com
 Virtualbox http://virtualbox.org
 
 At least 4 gigs of ram. (VM will require 2)
+2 Gigs of HD space
 
 Setup:
 
