@@ -3,8 +3,14 @@
 #update repository
 sudo apt-get -y update
 
+
 #install apache
 sudo apt-get -y install apache2
+
+if ! [ -L /var/www/html ]; then
+  rm -rf /var/www/html
+  ln -fs /vagrant/html /var/www/html
+fi
 
 #install and setup Mysql
 sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password root'
