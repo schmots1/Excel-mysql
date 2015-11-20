@@ -120,5 +120,7 @@ foreach my $file (@files){
     #for my $sql($query){
        $dbh->do($query);
     #}
+    my @query = "delete from $rename where LineID like ''";
+        $dbh-do($query);
 }
 print `rm *.csv`;

@@ -47,6 +47,12 @@ $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
 echo "<td>&nbsp&nbsp32-bit Volumes</td><td>$num_rows</td>";
 echo "</tr>";
+echo "<tr>";
+$sql = "Select * from Volumes where type like 'trad'";
+$result = $conn->query($sql);
+$num_rows = mysqli_num_rows($result);
+echo "<td>&nbsp&nbspTraditional Volumes</td><td>$num_rows</td>";
+echo "</tr>";
 
 //Qtree section
 echo "<tr>";
@@ -55,6 +61,32 @@ $result =  $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
 echo "<td>Qtrees</td><td>$num_rows</td>";
 echo "</tr>";
+
+//Lun section
+echo "<tr>";
+$sql = "select * from Luns";
+$result =  $conn->query($sql);
+$num_rows = mysqli_num_rows($result);
+echo "<td>Luns</td><td>$num_rows</td>";
+echo "</tr>";
+
+//CIFS shares section
+echo "<tr>";
+$sql = "select * from CIFS_Shares where LineID is not null";
+$result =  $conn->query($sql);
+$num_rows = mysqli_num_rows($result);
+echo "<td>Shares</td><td>$num_rows</td>";
+echo "</tr>";
+
+//Export section
+echo "<tr>";
+$sql = "select * from NFS_Exports";
+$result =  $conn->query($sql);
+$num_rows = mysqli_num_rows($result);
+echo "<td>Exports</td><td>$num_rows</td>";
+echo "</tr>";
+
+
 
 //if ($result->num_rows > 0) {
     // output data of each row
