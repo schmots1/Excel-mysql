@@ -45,7 +45,7 @@ while (my $FILE = readdir(DIR)) {
 	print "Processing $FILE\n";
 	my $BAK = $FILE;
 	$BAK =~ s/csv$/bak/g;
-	$BAK =~ s/CSV$/bak/g;
+#	$BAK =~ s/CSV$/bak/g;
 	rename ($FILE, $BAK);
 	open (BAK, "< $BAK") || die "unable to open $BAK\n";
 	open (NEW, "> $FILE") || die "unable to open $FILE\n";
@@ -120,7 +120,11 @@ foreach my $file (@files){
     #for my $sql($query){
        $dbh->do($query);
     #}
-    my @query = "delete from $rename[0] where LineID like ''";
+}
+foreach my $file (@files){
+    chomp($file);
+    my @rename = split('\.', $file);
+    my $query = "delete from $rename[0] where LineID like ''";
         $dbh->do($query);
 }
 print `rm *.csv`;

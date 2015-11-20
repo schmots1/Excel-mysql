@@ -57,7 +57,7 @@ echo "</tr>";
 //Qtree section
 echo "<tr>";
 $sql = "select * from Qtrees";
-$result =  $conn->query($sql);
+$result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
 echo "<td>Qtrees</td><td>$num_rows</td>";
 echo "</tr>";
@@ -65,7 +65,7 @@ echo "</tr>";
 //Lun section
 echo "<tr>";
 $sql = "select * from Luns";
-$result =  $conn->query($sql);
+$result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
 echo "<td>Luns</td><td>$num_rows</td>";
 echo "</tr>";
@@ -73,7 +73,7 @@ echo "</tr>";
 //CIFS shares section
 echo "<tr>";
 $sql = "select * from CIFS_Shares where LineID is not null";
-$result =  $conn->query($sql);
+$result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
 echo "<td>Shares</td><td>$num_rows</td>";
 echo "</tr>";
@@ -81,20 +81,57 @@ echo "</tr>";
 //Export section
 echo "<tr>";
 $sql = "select * from NFS_Exports";
-$result =  $conn->query($sql);
+$result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
 echo "<td>Exports</td><td>$num_rows</td>";
 echo "</tr>";
 
+//Totals section
+echo "<tr>";
+$sql = "select cast(sum(replace(total_used_size_GB,',','')) as decimal (10,2)) as total from Volumes";
+$result = $conn->query($sql);
+echo "<td>Space Used</td><td>";
+if ($result->num_rows > 0) {
+while($row=$result->fetch_assoc()) {
+echo $row['total'];
+echo "</td>";
+//echo "$result</td>";
+}
+}
+else {
+echo "0 results";
+}
+echo "</tr>";
 
+//SnapMirror section
+echo "<tr>";
+$sql = "select * from SnapMirror";
+$result = $conn->query($sql);
+$num_rows = mysqli_num_rows($result);
+echo "<td>SnapMirrors</td><td>$num_rows</td>";
+echo "</tr>";
 
-//if ($result->num_rows > 0) {
-    // output data of each row
-//    while($row = $result->fetch_assoc()) {
-//        echo "name: " . $row["name"]. " - Block Type: " . $row["block_type"]. " Used Space: " . $row["total_used_size_GB"]. "<br>";
-//    }
-//} else {
-//    echo "0 results";
-//}
+//SnapVault section
+echo "<tr>";
+$sql = "select * from SnapVault";
+$result = $conn->query($sql);
+$num_rows = mysqli_num_rows($result);
+echo "<td>SnapVaults</td><td>$num_rows</td>";
+echo "</tr>";
+
+//Transition PreCheck section
+echo "<tr>";
+$sql = "select * from Transition_PreCheck_Summary where severity like 'Red'";
+$result = $conn->query($sql);
+$num_rows = mysqli_num_rows($result);
+echo "<td>PreCheck issues</td><td bgcolor='red'>$num_rows</td>";
+$sql = "select * from Transition_PreCheck_Summary where severity like 'Yellow'";
+$result = $conn->query($sql);
+$num_rows = mysqli_num_rows($result);
+echo "</tr><tr>";
+echo "<td></td><td bgcolor='yellow'>$num_rows</td>";
+echo "</tr>";
+
+echo "</table>";
 $conn->close();
 ?>
