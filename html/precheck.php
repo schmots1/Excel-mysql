@@ -9,6 +9,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+echo "<a href=index.php> <- Back to Dashboard</a>";
 echo "<table border=1>"; 
 //Storage Controller section
 $sql = "select severity,pre_check,description, count(*) from Transition_PreCheck_Details group by pre_check order by severity";
