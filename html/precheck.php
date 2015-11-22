@@ -13,12 +13,11 @@ if ($conn->connect_error) {
 echo "<table border=1>"; 
 
 //Storage Controller section
-$sql = "select severity,pre_check,description, count(*) from Transition_PreCheck_Details group by pre_check";
+$sql = "select severity,pre_check,description, count(*) from Transition_PreCheck_Details group by pre_check order by severity";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row=$result->fetch_assoc()) {
 $severity = $row['severity'];
-echo "$severity";
 if ($severity == "Red"){
 echo "<tr bgcolor='red'><td>"  . $row['count(*)'] . "</td><td>" . $row['pre_check'] . "</td><td width=550px>" . $row['description'];
 }
