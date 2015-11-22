@@ -12,13 +12,13 @@ if ($conn->connect_error) {
 }
 echo "<a href=index.php> <- Back to Dashboard</a>";
 echo "<table border=1>"; 
-
+echo "<tr><td>Storage Controller</td><td>Source Controller</td><td>Destination Controller</td><td># of Snapmirrors</td></tr>";
 //Storage Controller section
 $sql = "select storage_controller,source_controller,destination_controller, count(*) from SnapMirror group by storage_controller";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row=$result->fetch_assoc()) {
-echo "<tr><td>"  . $row['count(*)'] . "</td><td>" . $row['pre_check'] . "</td><td width=550px>" . $row['description'];
+echo "<tr><td>"  . $row['storage_controller'] . "</td><td>" . $row['source_controller'] . "</td><td>" . $row['destination_controller'] . "</td><td>" . $row['count(*)'];
 }
 echo "</td></tr>";
 //echo "$result</td>";

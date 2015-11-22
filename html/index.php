@@ -108,7 +108,7 @@ echo "<tr>";
 $sql = "select * from SnapMirror";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td>SnapMirrors</td><td>$num_rows</td>";
+echo "<td><a href=snapmirror.php>SnapMirrors</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //SnapVault section
