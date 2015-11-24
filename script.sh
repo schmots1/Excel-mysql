@@ -3,6 +3,10 @@
 #update repository
 sudo apt-get -y update
 
+#apparmor tools
+sudo apt-get -y apparmor-utils
+sudo aa-complain /usr/sbin/mysqld
+sudo /etc/init.d/apparmor reload
 
 #install apache
 sudo apt-get -y install apache2
