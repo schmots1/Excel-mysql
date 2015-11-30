@@ -39,7 +39,7 @@ echo "<tr>";
 $sql = "SELECT name, block_type, total_used_size_GB FROM Volumes";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td>Volumes</td><td>$num_rows</td>";
+echo "<td><a href=volumes.php>Volumes</a></td><td>$num_rows</td>";
 echo "</tr>";
 echo "<tr>";
 $sql = "Select * from Volumes where block_type like '32-bit'";
