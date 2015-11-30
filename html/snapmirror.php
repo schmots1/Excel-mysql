@@ -11,18 +11,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo "<a href=index.php> <- Back to Dashboard</a>";
-echo "<table border=1>"; 
-echo "<tr><td>Storage Controller</td><td>Direction</td><td>SnapMirror Partner</td><td># of Snapmirrors</td></tr>";
+echo "<table border=0>"; 
+echo "<tr bgcolor=grey><td>Storage Controller</td><td>Direction</td><td>SnapMirror Partner</td><td># of Snapmirrors</td></tr>";
 //Snapmirror relationship section
 $sql = "select storage_controller,source_controller,destination_controller, count(*) from SnapMirror group by source_controller order by storage_controller, source_controller";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row=$result->fetch_assoc()) {
+$alt = ($coloralternator++ %2 ? "CCCCCE" : "FFFFFF");
 if ($row['storage_controller'] == $row['source_controller']){
-echo "<tr><td>"  . $row['storage_controller'] . "</td><td align=center> -> </td><td>" . $row['destination_controller'] . "</td><td>" . $row['count(*)'];
+echo "<tr style=\"background:$alt\"><td>"  . $row['storage_controller'] . "</td><td align=center> -> </td><td>" . $row['destination_controller'] . "</td><td>" . $row['count(*)'];
 }
 if ($row['storage_controller'] != $row['source_controller']){
-echo "<tr><td>"  . $row['storage_controller'] . "</td><td align=center> <- </td><td>" . $row['source_controller'] . "</td><td>" . $row['count(*)'];
+echo "<tr style=\"background:$alt\"><td>"  . $row['storage_controller'] . "</td><td align=center> <- </td><td>" . $row['source_controller'] . "</td><td>" . $row['count(*)'];
 }
 }
 echo "</td></tr>";

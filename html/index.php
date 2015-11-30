@@ -17,7 +17,7 @@ echo "<tr>";
 $sql = "select * from Storage_Controllers";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td style = 'width: 200px'>Storage Controllers</td><td>$num_rows</td>";
+echo "<td style = 'width: 200px'><a href=controller.php>Storage Controllers</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //Aggregate section
@@ -25,7 +25,7 @@ echo "<tr>";
 $sql = "select * from Aggregates";
 $result =  $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td>Aggregates</td><td>$num_rows</td>";
+echo "<td><a href=aggr.php>Aggregates</a></td><td>$num_rows</td>";
 echo "</tr>";
 echo "<tr>";
 $sql = "select * from Aggregates where block_type like '32-bit'";
@@ -59,7 +59,7 @@ echo "<tr>";
 $sql = "select * from Qtrees";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td>Qtrees</td><td>$num_rows</td>";
+echo "<td><a href=qtree.php>Qtrees</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //Lun section
