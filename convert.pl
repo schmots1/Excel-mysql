@@ -6,6 +6,23 @@
 use Spreadsheet::ParseExcel;
 use FileHandle;
 use strict;
+print "Name for Database:";
+chomp(my $input = <STDIN>);
+my $database = "up_$input";
+my $dsn = "DBI:mysql:";
+my $username = "root";
+my $password = "root";
+
+my %attr = (PrintError=>0, RaiseError=>1);
+
+my $dbh = DBI->connect($dsn,$username,$password, \%attr);
+
+    my $query = "create database $database";
+    #for my $sql($query){
+       $dbh->do($query);
+    #}
+
+
 
 my $filename = shift || "./up.xls";
 my $e = new Spreadsheet::ParseExcel;
@@ -72,7 +89,7 @@ for (readdir(DIR)) {
 
 use DBI;
 
-my $dsn = "DBI:mysql:test";
+my $dsn = "DBI:mysql:$database";
 my $username = "root";
 my $password = "root";
 
@@ -103,7 +120,7 @@ foreach my $file (@files){
 }
 
 
-my $dsn = "DBI:mysql:test";
+my $dsn = "DBI:mysql:$database";
 my $username = "root";
 my $password = "root";
 
