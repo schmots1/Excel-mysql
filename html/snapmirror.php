@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "test";
+$dbname = $_GET['database'];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -10,7 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "<a href=index.php> <- Back to Dashboard</a>";
+echo "<a href=dashboard.php?database=$dbname> <- Back to Dashboard</a>";
 echo "<table border=0>"; 
 echo "<tr bgcolor=grey><td>Storage Controller</td><td>Direction</td><td>SnapMirror Partner</td><td># of Snapmirrors</td></tr>";
 //Snapmirror relationship section

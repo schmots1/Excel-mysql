@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "test";
+$dbname = $_GET['database'];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -10,7 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "<a href=index.php> <- Back to Dashboard</a>";
+echo "<a href=dashboard.php?database=$dbname> <- Back to Dashboard</a>";
 echo "<table border=0>"; 
 //Storage Controller section
 echo "<tr bgcolor=grey><td>Host Name</td><td>Model</td><td>OnTap Version</td><td>Serial Number</td><td>Aggregate Count</td></tr>";
@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row=$result->fetch_assoc()) {
 $alt = ($coloralternator++ %2 ? "CCCCCE" : "FFFFFF");
-echo "<tr style=\"background:$alt\"><td style=\"background:$alt\">"  . $row['storage_controller'] . "</td><td>" . $row['system_model'] . "</td><td>" . $row['version'] . "</td><td>" . $row['system_serial_number'] . "</td><td><a href=aggr.php?filer=" . $row['storage_controller'] . ">" . $row['total_aggregates'] . "</a>";
+echo "<tr style=\"background:$alt\"><td style=\"background:$alt\">"  . $row['storage_controller'] . "</td><td>" . $row['system_model'] . "</td><td>" . $row['version'] . "</td><td>" . $row['system_serial_number'] . "</td><td><a href=aggr.php?database=$dbname&filer=" . $row['storage_controller'] . ">" . $row['total_aggregates'] . "</a>";
 }
 echo "</td></tr>";
 //echo "$result</td>";

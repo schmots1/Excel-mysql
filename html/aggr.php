@@ -2,18 +2,18 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "test";
+$dbname = $_GET['database'];
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "<a href=index.php> <- Back to Dashboard</a>";
+echo "<a href=dashboard.php?database=$dbname> <- Back to Dashboard</a>";
 echo "<table border=0>"; 
 //Storage Controller section
 echo "<tr bgcolor=grey><td>Filer</td><td>Aggregate</td><td>Block type</td><td>Used Space</td></tr>";
-if (empty($_GET)) {
+if (empty($_GET['filer'])) {
 $sql = "select storage_controller,name,total_used_size_GB,block_type from Aggregates order by storage_controller,block_type,name";
 }
 else {
