@@ -3,6 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "root";
 $dbname = $_GET['database'];
+$block = $_GET['block'];
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -14,7 +15,12 @@ echo "<table border=0>";
 //Storage Controller section
 echo "<tr bgcolor=grey><td>Filer</td><td>Aggregate</td><td>Block type</td><td>Used Space</td></tr>";
 if (empty($_GET['filer'])) {
-$sql = "select storage_controller,name,total_used_size_GB,block_type from Aggregates order by storage_controller,block_type,name";
+   if (empty($_GET['block'])) {
+   $sql = "select storage_controller,name,total_used_size_GB,block_type from Aggregates order by storage_controller,block_type,name";
+   }
+   else {   
+   $sql = "select storage_controller,name,total_used_size_GB,block_type from Aggregates where block_type like $block order by storage_controller,block_type,name";
+   }
 }
 else {
 $sql = "select storage_controller,name,total_used_size_GB,block_type from Aggregates where storage_controller like '" .  $_GET['filer'] . "' order by storage_controller,block_type,name";

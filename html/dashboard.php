@@ -34,7 +34,7 @@ echo "<tr>";
 $sql = "select * from Aggregates where block_type like '32-bit'";
 $result = $conn->query($sql);
 $num_rows=mysqli_num_rows($result);
-echo "<td>&nbsp&nbsp32-bit Aggregates</td><td>$num_rows</td>";
+echo "<td>&nbsp&nbsp<a href=volumes.php?database=$dbname&block='32-bit'>32-bit Aggregates</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //Volume section
