@@ -46,3 +46,7 @@ Open a browser and point it to localhost:8081
 Refreshing or removing the VM:
 If you want to clear your system and start over
 • From a console or git bash, navigate into the Excel-mysql directory and run 'vagrent destroy'
+
+To update:
+
+Download the zip again and overwrite the current directory.  If you used git the command 'git pull' from within the Excel-mysql directory will update the files.
