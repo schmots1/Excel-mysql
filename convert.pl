@@ -17,7 +17,7 @@ my %attr = (PrintError=>0, RaiseError=>1);
 
 my $dbh = DBI->connect($dsn,$username,$password, \%attr);
 
-    my $query = "create database $database";
+    my $query = "create database `$database`";
     #for my $sql($query){
        $dbh->do($query);
     #}
