@@ -43,3 +43,6 @@ Now run 'cd /vagrant' to switch to the shared folder.
 run './convert.pl'
 Open a browser and point it to localhost:8081
 
+Refreshing or removing the VM:
+If you want to clear your system and start over
+• From a console or git bash, navigate into the Excel-mysql directory and run 'vagrent destroy'
