@@ -6,6 +6,7 @@ A converting tool for getting UP and 7mtt excel docs into mysql
 System Requirements:
 
   • At least 4 gigs of ram. (VM will require 2)
+
   • 2 Gigs of HD space
   • Access to internet during initial startup.
   • Windows/Mac/Linux
