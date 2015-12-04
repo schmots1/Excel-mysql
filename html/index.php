@@ -10,7 +10,11 @@ $conn = new mysqli($servername, $username, $password);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+if (!empty($_GET['delete'])) {
+$delete = $_GET['delete'];
+$sql = "drop database $delete";
+$result = $conn->query($sql);
+}
 $sql = "show databases";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {

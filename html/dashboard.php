@@ -144,6 +144,6 @@ echo "<tr><td><a href=migration.php?database=$dbname&method=". urlencode($row['m
 }
 echo "</table>";
 echo "</table>";
-echo "<a href=index.php>Select another Dataset</a>";
+echo "<a href=index.php>Select another Dataset</a> <a href=index.php?delete=$dbname>Delete this dataset</a>";
 $conn->close();
 ?>
