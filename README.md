@@ -12,11 +12,13 @@ System Requirements:
   * 64-bit virt processor option (workaround available if needed)
 
 Software Requirements:
+
 (All)
-• Vagrant http://www.vagrantup.com
-• Virtualbox http://virtualbox.org
+* Vagrant http://www.vagrantup.com
+* Virtualbox http://virtualbox.org
+
 (Windows Only)
-Git Bash https://git-scm.com/download/win
+*Git Bash https://git-scm.com/download/win
 (Git suggested on Mac, Linux)
 
 UP Requirements:
@@ -28,9 +30,9 @@ Setup Instructions:
 2. Download or git clone the project https://github.com/schmots1/Excel-mysql/archive/master.zip (#git clone https://github.com/schmots1/Excel-mysql.git)
 2b. If you downloaded the zip file extract it.
 3. From a console or git bash(run as adminstrator), navigate into the Excel-mysql directory that now exists (Excel-mysql-master if you used the .zip).
-•If you have 64-bit virtualiztaion on in your bios
+*If you have 64-bit virtualiztaion on in your bios
 4. Run the command 'vagrant up'
-•If you don't have, or can't virtualize 64-bit
+*If you don't have, or can't virtualize 64-bit
 4a. Edit the "Vagrantfile".  Modify the line that says '   config.vm.box = "ubuntu/trusty64"' to say '   config.vm.box = "ubuntu/trusty32"'.  Save the file
 4b. Run the command 'vagrant up'
 
@@ -40,19 +42,24 @@ Setup Instructions:
 
 Unified Parcer output prep:
 
-Open the UP excel file you want to prep, as well as the 'UP_3.0.1.1_prepare.xls' file from the Excel-mysql dir.  From the file you want to prep choose 'view->view macros' and run the macro from the UP_3.0.1.1_prepare.xls.  This will remove three tabs and prepare the rest for import to mysql.  When done save the file as up.xls in Excel-mysql directory.  The file must be saved as a .xls and not a .xlsx
+1. Open the UP excel file you want to prep, as well as the 'UP_3.0.1.1_prepare.xls' file from the Excel-mysql dir.  
+2. From the file you want to prep choose 'view->view macros' and run the macro from the UP_3.0.1.1_prepare.xls.  
+* This will remove three tabs and prepare the rest for import to mysql.  
+3. When done save the file as up.xls in Excel-mysql directory.  
+*The file must be saved as a .xls and not a .xlsx
 
 Database/Dashboard prep:
 
-From a console or git bash, navigate into the Excel-mysql directory and run 'vagrant ssh'.  This will ssh you into the LAMP system.  
-Now run 'cd /vagrant' to switch to the shared folder.  
-run './convert.pl'
-Open a browser and point it to localhost:8081
+1. From a console or git bash, navigate into the Excel-mysql directory and run 'vagrant ssh'.  *This will ssh you into the LAMP system.  
+2. Run 'cd /vagrant' to switch to the shared folder.  
+3. Run './convert.pl'
+4. Open a browser and point it to localhost:8081
 
 Refreshing or removing the VM:
-If you want to clear your system and start over
-• From a console or git bash, navigate into the Excel-mysql directory and run 'vagrent destroy'
+(If you want to clear your system and start over)
+* From a console or git bash, navigate into the Excel-mysql directory and run 'vagrent destroy'
 
 To update:
 
-Download the zip again and overwrite the current directory.  If you used git the command 'git pull' from within the Excel-mysql directory will update the files.
+1. Download the zip again and overwrite the current directory.  
+1a. If you used git the command 'git pull' from within the Excel-mysql directory will update the files.
