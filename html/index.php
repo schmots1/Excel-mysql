@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 if (!empty($_GET['delete'])) {
 $delete = $_GET['delete'];
-$sql = "drop database $delete";
+$sql = "drop database `$delete`";
 $result = $conn->query($sql);
 }
 $sql = "show databases";
