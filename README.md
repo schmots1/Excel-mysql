@@ -30,9 +30,9 @@ Setup Instructions:
 2. Download or git clone the project https://github.com/schmots1/Excel-mysql/archive/master.zip (#git clone https://github.com/schmots1/Excel-mysql.git)
 2b. If you downloaded the zip file extract it.
 3. From a console or git bash(run as adminstrator), navigate into the Excel-mysql directory that now exists (Excel-mysql-master if you used the .zip).
-*If you have 64-bit virtualiztaion on in your bios
+* If you have 64-bit virtualiztaion on in your bios
 4. Run the command 'vagrant up'
-*If you don't have, or can't virtualize 64-bit
+* If you don't have, or can't virtualize 64-bit
 4a. Edit the "Vagrantfile".  Modify the line that says '   config.vm.box = "ubuntu/trusty64"' to say '   config.vm.box = "ubuntu/trusty32"'.  Save the file
 4b. Run the command 'vagrant up'
 
