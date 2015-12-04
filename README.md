@@ -30,7 +30,7 @@ Setup Instructions:
 2. Download or git clone the project https://github.com/schmots1/Excel-mysql/archive/master.zip / #git clone https://github.com/schmots1/Excel-mysql.git.
 3. If you downloaded the zip file extract it. (If you use the zip file the working directory will be called Excel-mysql-master)
 
-* If you don't have virt on in bios, or can't virtualize 64-bit.
+*If you don't have virt on in bios, or can't virtualize 64-bit.
 
 4. Open for editing the file called "Vagrantfile" in the newly created/extracted Excel-mysql directory.  
 5. Modify the line that says '   config.vm.box = "ubuntu/trusty64"' to say '   config.vm.box = "ubuntu/trusty32"'.
@@ -41,10 +41,10 @@ Setup Instructions:
 (The vm will shutdown sometimes when the Host system sleeps.  Simply repeat steps 3-4 to restart the vm.
 
 Unified Parcer output prep:
+* This will remove three tabs and prepare the rest for import to mysql.  
 
 1. Open the UP excel file you want to prep, as well as the 'UP_3.0.1.1_prepare.xls' file from the Excel-mysql dir.  
 2. From the file you want to prep choose 'view->view macros' and run the macro from the UP_3.0.1.1_prepare.xls.  
-* This will remove three tabs and prepare the rest for import to mysql.  
 3. When done save the file as up.xls in Excel-mysql directory.  
 *The file must be saved as a .xls and not a .xlsx
 
