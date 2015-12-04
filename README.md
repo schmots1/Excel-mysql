@@ -38,8 +38,6 @@ Setup Instructions:
 
 *add note about forward ports
 
-(The vm will shutdown sometimes when the Host system sleeps.  Simply repeat steps 3-4 to restart the vm.
-
 Unified Parcer output prep:
 * This will remove three tabs and prepare the rest for import to mysql.  
 
@@ -50,10 +48,11 @@ Unified Parcer output prep:
 
 Database/Dashboard prep:
 
-1. From a console or git bash, navigate into the Excel-mysql directory and run 'vagrant ssh'.  *Git Bash must be run as Administrator.  
-2. Run 'cd /vagrant' to switch to the shared folder.  
-3. Run './convert.pl' and follow the instructions.
-4. Open a browser and point it to localhost:8081.
+1. From a console or git bash, navigate into the Excel-mysql directory and run 'vagrant up'.  *Git Bash must be run as Administrator. 
+2. In the same directory run 'vagrant ssh'. 
+3. Run 'cd /vagrant' to switch to the shared folder.  
+4. Run './convert.pl' and follow the instructions.
+5. Open a browser and point it to localhost:8081.
 
 Refreshing or removing the VM:
 (If you want to clear your system and start over)
