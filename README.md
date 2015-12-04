@@ -27,7 +27,7 @@ Must be at least version 3.0.1.1 of UP.  4.0.0.1 also works.
 Setup Instructions:
 
 1. Install Virtualbox, Vagrant(, and Git Bash on Windows).
-2. Download or git clone the project https://github.com/schmots1/Excel-mysql/archive/master.zip (#git clone https://github.com/schmots1/Excel-mysql.git).
+2. Download or git clone the project https://github.com/schmots1/Excel-mysql/archive/master.zip / #git clone https://github.com/schmots1/Excel-mysql.git.
 3. If you downloaded the zip file extract it. (If you use the zip file the working directory will be called Excel-mysql-master)
 
 * If you don't have virt on in bios, or can't virtualize 64-bit.
