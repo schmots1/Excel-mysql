@@ -50,10 +50,10 @@ Unified Parcer output prep:
 
 Database/Dashboard prep:
 
-1. From a console or git bash, navigate into the Excel-mysql directory and run 'vagrant ssh'.  *This will ssh you into the LAMP system.  
+1. From a console or git bash, navigate into the Excel-mysql directory and run 'vagrant ssh'.  *Git Bash must be run as Administrator.  
 2. Run 'cd /vagrant' to switch to the shared folder.  
-3. Run './convert.pl'
-4. Open a browser and point it to localhost:8081
+3. Run './convert.pl' and follow the instructions.
+4. Open a browser and point it to localhost:8081.
 
 Refreshing or removing the VM:
 (If you want to clear your system and start over)
