@@ -18,8 +18,8 @@ Software Requirements:
 * Virtualbox http://virtualbox.org
 
 (Windows Only)
-*Git Bash https://git-scm.com/download/win
-*(Git suggested on Mac, Linux)
+* Git Bash https://git-scm.com/download/win
+(Git suggested on Mac, Linux)
 
 UP Requirements:
 Must be at least version 3.0.1.1 of UP.  4.0.0.1 also works.
