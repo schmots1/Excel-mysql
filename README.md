@@ -31,6 +31,7 @@ Setup Instructions:
 3. If you downloaded the zip file extract it. (If you use the zip file the working directory will be called Excel-mysql-master)
 
 * If you don't have virt on in bios, or can't virtualize 64-bit.
+
 4. Open for editing the file called "Vagrantfile" in the newly created/extracted Excel-mysql directory.  
 5. Modify the line that says '   config.vm.box = "ubuntu/trusty64"' to say '   config.vm.box = "ubuntu/trusty32"'.
 6. Save the file.
