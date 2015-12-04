@@ -28,7 +28,7 @@ Setup Instructions:
 
 1. Install Virtualbox, Vagrant(, and Git Bash on Windows).
 2. Download or git clone the project https://github.com/schmots1/Excel-mysql/archive/master.zip (#git clone https://github.com/schmots1/Excel-mysql.git).
-2a. If you downloaded the zip file extract it.
+* If you downloaded the zip file extract it.
 3. From a console or git bash(run as adminstrator), navigate into the Excel-mysql directory that now exists (Excel-mysql-master if you used the .zip).
 * If you have 64-bit virtualiztaion on in your bios.
 4. Run the command 'vagrant up'.
