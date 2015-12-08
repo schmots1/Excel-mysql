@@ -70,7 +70,7 @@ echo "<tr>";
 $sql = "select * from Luns";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td>Luns</td><td>$num_rows</td>";
+echo "<td><a href=luns.php?database=$dbname>Luns</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //CIFS shares section
