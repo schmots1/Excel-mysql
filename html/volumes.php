@@ -15,11 +15,14 @@ echo "<a href=dashboard.php?database=$dbname> <- Back to Dashboard</a>";
 echo "<table border=0>"; 
 //Storage Controller section
 echo "<tr bgcolor=grey><td>Filer</td><td>Volume</td><td>Block Type</td><td>Used Space</td><td>File Count</td><td>Aggregate</td><td>Number of Qtrees</td><td>Number of Luns</td><td>Number of Snapmirrors</td><td>Number of Snapvaults</td><td>State</td><td>Language</td><td>Vfiler</td>";
-if (empty($_GET['block'])) {
-$sql = "select storage_controller,aggregate_name,vfiler_name,name,workload,state,block_type,language,files_used,total_used_size_GB,total_luns,total_qtrees,total_snapmirrors,total_snapvaults from Volumes order by storage_controller, block_type, name";
-}
-else {
+if (!empty($_GET['block'])) {
 $sql = "select storage_controller,aggregate_name,vfiler_name,name,workload,state,block_type,language,files_used,total_used_size_GB,total_luns,total_qtrees,total_snapmirrors,total_snapvaults from Volumes where `block_type` like $block order by storage_controller, block_type, name";
+}
+elseif (!empty($_GET['type'])) {
+$sql = "select storage_controller,aggregate_name,vfiler_name,name,workload,state,block_type,language,files_used,total_used_size_GB,total_luns,total_qtrees,total_snapmirrors,total_snapvaults from Volumes where `type` like 'trad' order by storage_controller, block_type, name";
+}
+else{
+$sql = "select storage_controller,aggregate_name,vfiler_name,name,workload,state,block_type,language,files_used,total_used_size_GB,total_luns,total_qtrees,total_snapmirrors,total_snapvaults from Volumes order by storage_controller, block_type, name";
 }
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {

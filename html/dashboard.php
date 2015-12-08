@@ -54,7 +54,7 @@ echo "<tr>";
 $sql = "Select * from Volumes where type like 'trad'";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td>&nbsp&nbspTraditional Volumes</td><td>$num_rows</td>";
+echo "<td>&nbsp&nbsp<a href=volumes.php?database=$dbname&type=trad>Traditional Volumes</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //Qtree section
@@ -119,7 +119,7 @@ echo "<tr>";
 $sql = "select * from SnapVault";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td>SnapVaults</td><td>$num_rows</td>";
+echo "<td><a href=snapvaults.php?database=$dbname>SnapVaults</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //Transition PreCheck section
