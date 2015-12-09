@@ -13,7 +13,9 @@ if ($conn->connect_error) {
 echo "<a href=dashboard.php?database=$dbname> <- Back to Dashboard</a>";
 echo "<table border=0>"; 
 //Storage Controller section
-if (!empty ($_GET['serial'])) {
+if (!empty ($_GET['detail'])) {
+}
+elseif (!empty ($_GET['serial'])) {
   $sql = "select system_serial_number from Storage_Controllers";
   $result = $conn->query($sql);
   if ($result->num_rows > 0) {

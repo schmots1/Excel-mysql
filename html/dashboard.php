@@ -78,7 +78,7 @@ echo "<tr>";
 $sql = "select * from CIFS_Shares where LineID is not null";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td>Shares</td><td>$num_rows</td>";
+echo "<td><a href=shares.php?database=$dbname>Shares</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //Export section
