@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row=$result->fetch_assoc()) {
 $alt = ($coloralternator++ %2 ? "CCCCCE" : "FFFFFF");
-echo "<tr style=\"background:$alt\"><td style=\"background:$alt\">"  . $row['storage_controller'] . "</td><td>" . $row['volume_name'] . "</td><td>" . $row['share_name'] . "</td><td>" . $row['mount_point'];
+echo "<tr style=\"background:$alt\"><td style=\"background:$alt\">"  . $row['storage_controller'] . "</td><td>" . $row['volume_name'] . "</td><td><a href=acls.php?database=$dbname&share=" . $row['share_name'] . ">" . $row['share_name'] . "</a></td><td>" . $row['mount_point'];
 }
 echo "</td></tr>";
 //echo "$result</td>";
