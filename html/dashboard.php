@@ -10,7 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$heading = split ("\_", $dbname);
+$heading = split ("\-", $dbname);
 echo "<h1>$heading[1]</h1>";
 echo "<table><tr><td>";
 echo "<table border=1>"; 
