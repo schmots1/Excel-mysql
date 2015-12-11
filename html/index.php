@@ -20,8 +20,8 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
    while($row=$result->fetch_assoc()) {
       if (strpos($row['Database'], 'up') === 0) {
-      $database = split ("\_", $row['Database']);
-      echo "<a href=dashboard.php?database=up_" . $database['1'] . ">" . $database['1'] . "</a><br>";
+      $database = split ("\-", $row['Database']);
+      echo "<a href=dashboard.php?database=up-" . $database['1'] . ">" . $database['1'] . "</a><br>";
       }
    }
 }
