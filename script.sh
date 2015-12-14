@@ -4,7 +4,7 @@
 sudo apt-get -y update
 
 #apparmor tools
-sudo apt-get -y apparmor-utils
+sudo apt-get -y install apparmor-utils
 sudo aa-complain /usr/sbin/mysqld
 sudo /etc/init.d/apparmor reload
 
