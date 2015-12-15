@@ -22,7 +22,8 @@ Software Requirements:
 (Git suggested on Mac, Linux)
 
 UP Requirements:
-Must be at least version 3.0.1.1 of UP.  4.0.0.1 also works.
+Must be at least version 3.0.1.1 of UP.  4.0.0.1 and 4.0.1.1 also work with the 3.0.1.1 prepare file.  For 5.0.0.1 and higher use the 5.0.0.1 prepare file.
+
 
 Setup Instructions:
 
