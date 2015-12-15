@@ -20,7 +20,7 @@ echo "<tr>";
 $sql = "select * from Storage_Controllers";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td style = 'width: 200px'><a href=controller.php?database=$dbname>Storage Controllers</a></td><td>$num_rows</td>";
+echo "<td style = 'width: 200px'><a href=controllers.php?database=$dbname>Storage Controllers</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //vFiler section
@@ -36,7 +36,7 @@ echo "<tr>";
 $sql = "select * from Aggregates";
 $result =  $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td><a href=aggr.php?database=$dbname>Aggregates</a></td><td>$num_rows</td>";
+echo "<td><a href=aggrs.php?database=$dbname>Aggregates</a></td><td>$num_rows</td>";
 echo "</tr>";
 echo "<tr>";
 $sql = "select * from Aggregates where block_type like '32-bit'";
@@ -70,7 +70,7 @@ echo "<tr>";
 $sql = "select * from Qtrees";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td><a href=qtree.php?database=$dbname>Qtrees</a></td><td>$num_rows</td>";
+echo "<td><a href=qtrees.php?database=$dbname>Qtrees</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //Lun section
