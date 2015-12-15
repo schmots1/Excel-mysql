@@ -58,6 +58,6 @@ else {
 }
 echo "</tr>";
 echo "</table>";
-echo "<a href=controller.php?database=$dbname&serial=yes>Just Serial list</a>";
+echo "<a href=controllers.php?database=$dbname&serial=yes>Just Serial list</a>";
 $conn->close();
 ?>
