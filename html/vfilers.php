@@ -12,16 +12,77 @@ if ($conn->connect_error) {
 }
 echo "<a href=dashboard.php?database=$dbname> <- Back to Dashboard</a>";
 echo "<table border=0>"; 
-//Storage Controller section
-echo "<tr bgcolor=grey><td>Filer</td><td>vFiler</td><td>Status</td><td># Volumes</td><td># Qtrees</td><td># Luns</td><td># Shares</td><td># Exports</td><td># Snapmirrors</td><td># SnapVaults</td><td>Total Used Size GB</td></tr>";
+//Column Header section
+echo "<tr bgcolor=grey>";
+echo "<td>Filer</td>";
+echo "<td>vFiler</td>";
+echo "<td>Status</td>";
+echo "<td># Volumes</td>";
+echo "<td># Qtrees</td>";
+echo "<td># Luns</td>";
+echo "<td># Shares</td>";
+echo "<td># Exports</td>";
+echo "<td># Snapmirrors</td>";
+echo "<td># SnapVaults</td>";
+echo "<td>Total Used Size GB</td>";
+echo "</tr>";
+//SQL Statement Section
 $sql = "select * from Vfilers where vfiler_name not in (select storage_controller from Vfilers)";
+//Query results section
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row=$result->fetch_assoc()) {
 $alt = ($coloralternator++ %2 ? "CCCCCE" : "FFFFFF");
-echo "<tr style=\"background:$alt\"><td style=\"background:$alt\">"  . $row['storage_controller'] . "</td><td>" . $row['vfiler_name'] . "</td><td>" . $row['status'] . "</td><td><a href=volumes.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_volumes'] . "</a></td><td><a href=qtrees.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_qtrees'] . "</td><td>" . $row['total_luns'] . "</td><td>" . $row['total_shares'] . "</td><td>" . $row['total_exports'] . "</td><td>" . $row['total_snapmirrors'] . "</td><td>" . $row['total_snapvaults'] . "</td><td>" . $row['total_used_size_GB'];
+//Output of query
+echo "<tr style=\"background:$alt\">";
+echo "<td>"  . $row['storage_controller'] . "</td>";
+echo "<td>" . $row['vfiler_name'] . "</td>";
+echo "<td>" . $row['status'] . "</td>";
+if ($row['total_volumes'] > 0) {
+echo "<td><a href=volumes.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_volumes'] . "</a></td>";
 }
-echo "</td></tr>";
+else {
+echo "<td>" . $row['total_volumes'] . "</td>";
+}
+if ($row['total_qtrees'] > 0) {
+echo "<td><a href=qtrees.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_qtrees'] . "</a></td>";
+}
+else {
+echo "<td>" . $row['total_qtrees'] . "</td>";
+}
+if ($row['total_luns'] > 0) {
+echo "<td><a href=luns.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_luns'] . "</a></td>";
+}
+else {
+echo "<td>" . $row['total_luns'] . "</td>";
+}
+if ($row['total_shares'] > 0) {
+echo "<td><a href=shares.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_shares'] . "</a></td>";
+}
+else {
+echo "<td>" . $row['total_shares'] . "</td>";
+}
+if ($row['total_exports'] > 0) {
+echo "<td><a href=exports.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_exports'] . "</a></td>";
+}
+else {
+echo "<td>" . $row['total_exports'] . "</td>";
+}
+if ($row['total_snapmirrors'] > 0) {
+echo "<td><a href=snapmirrors.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_snapmirrors'] . "</a></td>";
+}
+else {
+echo "<td>" . $row['total_snapmirrors'] . "</td>";
+}
+if ($row['total_snapvaults'] > 0) {
+echo "<td><a href=snapvaults.php?database=$dbname&filer=" . $row['storage_controller'] . "&vfiler=" . $row['vfiler_name'] . ">" . $row['total_snapvaults'] . "</a></td>";
+}
+else {
+echo "<td>" . $row['total_snapvaults'] . "</td>";
+}
+echo "<td>" . $row['total_used_size_GB'] . "</td>";
+echo "</tr>";
+}
 //echo "$result</td>";
 }
 else {

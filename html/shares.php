@@ -12,9 +12,21 @@ if ($conn->connect_error) {
 }
 echo "<a href=dashboard.php?database=$dbname> <- Back to Dashboard</a>";
 echo "<table border=0>"; 
-//Shares section
-echo "<tr bgcolor=grey><td>Filer</td><td>Volume</td><td>Share</td><td>Mount Point</td></tr>";
+//Column Header section
+echo "<tr bgcolor=grey>";
+echo "<td>Filer</td>";
+echo "<td>Volume</td>";
+echo "<td>Share</td>";
+echo "<td>Mount Point</td>";
+echo "</tr>";
+//SQL Statement section
+if (!empty($_GET['vfiler']) and !empty($_GET['filer'])) {
+$sql = "select * from CIFS_Shares where storage_controller like '" . $_GET['filer'] . "'  and vfiler_name like '" . $_GET['vfiler'] . "'";
+}
+else {
 $sql = "select storage_controller,volume_name,share_name,mount_point from CIFS_Shares order by storage_controller,volume_name";
+}
+//Results Section
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while($row=$result->fetch_assoc()) {

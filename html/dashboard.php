@@ -42,7 +42,7 @@ echo "<tr>";
 $sql = "select * from Aggregates where block_type like '32-bit'";
 $result = $conn->query($sql);
 $num_rows=mysqli_num_rows($result);
-echo "<td>&nbsp&nbsp<a href=aggr.php?database=$dbname&block='32-bit'>32-bit Aggregates</a></td><td>$num_rows</td>";
+echo "<td>&nbsp&nbsp<a href=aggrs.php?database=$dbname&block='32-bit'>32-bit Aggregates</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //Volume section
@@ -119,7 +119,7 @@ echo "<tr>";
 $sql = "select * from SnapMirror";
 $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
-echo "<td><a href=snapmirror.php?database=$dbname>SnapMirrors</a></td><td>$num_rows</td>";
+echo "<td><a href=snapmirrors.php?database=$dbname>SnapMirrors</a></td><td>$num_rows</td>";
 echo "</tr>";
 
 //SnapVault section
