@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 $heading = split ("\-", $dbname);
 echo "<h1>$heading[1]</h1>";
-echo "<table><tr><td>";
+echo "<table><tr><td rowspan=2>";
 echo "<table border=1>"; 
 
 //Storage Controller section
@@ -141,8 +141,9 @@ $result = $conn->query($sql);
 $num_rows = mysqli_num_rows($result);
 echo "</tr><tr>";
 echo "<td></td><td bgcolor='yellow'>$num_rows</td>";
-echo "</tr></table></td><td>";
-// Migration Suggustion section
+echo "</tr></table></td><td valign='top'>";
+// Migration Suggestion section
+
 echo "<table border=1>";
 echo "<tr><td colspan=2>Migration Suggestions</td></tr>";
 $sql = "select `migration_methodology`, count(*) from Migration_Master_Volume_View group by `migration_methodology`";
@@ -151,6 +152,18 @@ while($row=$result->fetch_assoc()) {
 echo "<tr><td><a href=migration.php?database=$dbname&method=". urlencode($row['migration_methodology']) . ">" . $row['migration_methodology'] . "</td><td>" . $row['count(*)'] . "</td></tr>";
 }
 echo "</table>";
+echo "</td></tr>";
+
+// Migration Plan section
+echo "<tr><td valign='top'><table border=1>";
+echo "<tr><td colspan=2>Migration Status</td></tr>";
+$sql = "select `stage`, count(*) from Migration_Plan group by `stage`";
+$result = $conn->query($sql);
+while($row=$result->fetch_assoc()) {
+echo "<tr><td><a href=plan.php?stage=" . urlencode($row['stage']) . ">" . $row['stage'] . "</a></td><td>" . $row['count(*)'] . "</td><tr>";
+}
+echo "</table>";
+echo "</td>";
 echo "</table>";
 echo "<a href=index.php>Select another Dataset</a> <a href=verify.php?delete=$dbname>Delete this dataset</a>";
 $conn->close();
