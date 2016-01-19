@@ -145,7 +145,7 @@ echo "</tr></table></td><td valign='top'>";
 // Migration Suggestion section
 
 echo "<table border=1>";
-echo "<tr><td colspan=2>Migration Suggestions</td></tr>";
+echo "<tr><td colspan=2 bgcolor=lightgrey>Migration Suggestions</td></tr>";
 $sql = "select `migration_methodology`, count(*) from Migration_Master_Volume_View group by `migration_methodology`";
 $result = $conn->query($sql);
 while($row=$result->fetch_assoc()) {
@@ -156,11 +156,11 @@ echo "</td></tr>";
 
 // Migration Plan section
 echo "<tr><td valign='top'><table border=1>";
-echo "<tr><td colspan=2>Migration Status</td></tr>";
+echo "<tr><td colspan=2 bgcolor=lightgrey>Migration Status</td></tr>";
 $sql = "select `stage`, count(*) from Migration_Plan group by `stage`";
 $result = $conn->query($sql);
 while($row=$result->fetch_assoc()) {
-echo "<tr><td><a href=plan.php?stage=" . urlencode($row['stage']) . ">" . $row['stage'] . "</a></td><td>" . $row['count(*)'] . "</td><tr>";
+echo "<tr><td><a href=plan.php?database=$dbname&stage=" . urlencode($row['stage']) . ">" . $row['stage'] . "</a></td><td>" . $row['count(*)'] . "</td><tr>";
 }
 echo "</table>";
 echo "</td>";

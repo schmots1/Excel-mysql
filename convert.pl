@@ -8,7 +8,7 @@ use FileHandle;
 use strict;
 print "Name for Database:";
 chomp(my $input = <STDIN>);
-my $database = "up_$input";
+my $database = "up-$input";
 my $dsn = "DBI:mysql:";
 my $username = "root";
 my $password = "root";

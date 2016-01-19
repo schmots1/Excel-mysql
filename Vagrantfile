@@ -9,6 +9,6 @@ Vagrant.configure(2) do |config|
    config.vm.network "private_network", ip: "192.168.50.10"
    config.vm.provision "shell", path: "script.sh" 
    config.vm.provider "virtualbox" do |vb|
-     vb.memory = "2048"
+     vb.memory = "4096"
    end
 end
