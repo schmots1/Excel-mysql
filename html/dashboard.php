@@ -159,11 +159,13 @@ echo "<tr><td valign='top'><table border=1>";
 echo "<tr><td colspan=2 bgcolor=lightgrey>Migration Status</td></tr>";
 $sql = "select `stage`, count(*) from Migration_Plan group by `stage`";
 $result = $conn->query($sql);
+if ($result->num_rows > 0) {
 while($row=$result->fetch_assoc()) {
-echo "<tr><td><a href=plan.php?database=$dbname&stage=" . urlencode($row['stage']) . ">" . $row['stage'] . "</a></td><td>" . $row['count(*)'] . "</td><tr>";
+echo "<tr><td><a href=plan.php?database=$dbname&stage=" . urlencode($row['stage']) . ">" . $row['stage'] . "</a></td><td>" . $row['count(*)'] . "</td></tr>";
+}
 }
 echo "</table>";
-echo "</td>";
+echo "</td></tr>";
 echo "</table>";
 echo "<a href=index.php>Select another Dataset</a> <a href=verify.php?delete=$dbname>Delete this dataset</a>";
 $conn->close();
