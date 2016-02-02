@@ -30,7 +30,7 @@ $imt_ready = $_GET['imt_ready'];
 $comments = $_GET['comments'];
 $migration_method = $_GET['migration_method'];
 $stage = $_GET['stage'];
-$sql = "update Migration_Plan set `destination_cluster`='$destination_cluster', `destination_svm`='$destination_svm', `destination_node`='$destination_node', `destination_aggr`='$destination_aggr', `classification`='$classification', `application`='$application', `app_owner`='$app_owner', `owner_email`='$owner_email', `move_group`='$move_group', `group_email`='$group_email', `organization`='$orginization', `service_level`='$service_level', `imt_ready`='$imt_ready', `comments`='$comments', `migration_method`='$migration_method', `stage`='$stage' where `id`=$id";
+$sql = "update Migration_Plan set `destination_cluster`='$destination_cluster', `destination_svm`='$destination_svm', `destination_node`='$destination_node', `destination_aggr`='$destination_aggr', `classification`='$classification', `application`='$application', `app_owner`='$app_owner', `owner_email`='$owner_email', `move_group`='$move_group', `group_email`='$group_email', `organization`='$organization', `service_level`='$service_level', `imt_ready`='$imt_ready', `comments`='$comments', `migration_method`='$migration_method', `stage`='$stage' where `id`=$id";
 $result = $conn->query($sql);
 }
 
