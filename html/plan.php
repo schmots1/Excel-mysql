@@ -31,7 +31,6 @@ echo "<td white-space: nowrap>Organization</td>";
 echo "<td white-space: nowrap>Service Level</td>";
 echo "<td white-space: nowrap>IMT Readiness</td>";
 echo "<td white-space: nowrap>Comments</td>";
-echo "<td white-space: nowrap>State</td>";
 echo "<td white-space: nowrap>Migration Method</td>";
 echo "<td white-space: nowrap>Stage</td>";
 //SQL statements section
@@ -63,9 +62,8 @@ echo "<td white-space: nowrap>" . $row['orginization'] . "</td>";
 echo "<td white-space: nowrap>" . $row['service_level'] . "</td>";
 echo "<td white-space: nowrap>" . $row['imt_ready'] . "</td>";
 echo "<td white-space: nowrap>" . $row['comments'] . "</td>";
-echo "<td white-space: nowrap>" . $row['state'] . "</td>";
-echo "<td white-space: nowrap>" . $row['language'] . "</td>";
-echo "<td white-space: nowrap>" . $row['vfiler_name'] . "</td>";
+echo "<td white-space: nowrap>" . $row['migration_method'] . "</td>";
+echo "<td white-space: nowrap>" . $row['stage'] . "</td>";
 echo "</tr>";
 }
 //echo "$result</td>";
