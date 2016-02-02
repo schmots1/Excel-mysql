@@ -164,6 +164,9 @@ while($row=$result->fetch_assoc()) {
 echo "<tr><td><a href=plan.php?database=$dbname&stage=" . urlencode($row['stage']) . ">" . $row['stage'] . "</a></td><td>" . $row['count(*)'] . "</td></tr>";
 }
 }
+else{
+echo "<tr><td colspan=2><a href=plancreate.php?database=$dbname>Create Migration Plan</a></td></tr>";
+}
 echo "</table>";
 echo "</td></tr>";
 echo "</table>";
