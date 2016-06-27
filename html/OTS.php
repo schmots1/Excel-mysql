@@ -207,7 +207,54 @@ echo "<th><font color=white>80-60 %</font></th>";
 echo "<th><font color=white>60-40 %</font></th>";
 echo "<th><font color=white>40-20%</font></th>";
 echo "<th><font color=white><20%</font></th>";
-echo "</tr>";
+echo "</tr><tr>";
+echo "<td>Controller Count</td>";
+echo "<td>";
+$sql = "select * from Storage_Controllers";
+$result = $conn->query($sql);
+$filer_total = 0;
+$filer_used = 0;
+$eight = 0;
+$six = 0;
+$four = 0;
+$two = 0;
+$zero = 0;
+if ($result->num_rows > 0) {
+	while($row=$result->fetch_assoc()) {
+		$filer = $row['storage_controller'];
+		$sql1 = "select cast(sum(replace(total_size_GB,',','')) as decimal (10,2)) as total from Aggregates where storage_controller like '$filer'";
+		$result1 = $conn->query($sql1);
+		if ($result1->num_rows > 0) {
+			while($row1=$result1->fetch_assoc()) {
+				$filer_total = $row1['total'];
+			}
+		}
+		$sql2 = "select cast(sum(replace(total_used_size_GB,',','')) as decimal (10,2)) as used from Aggregates where storage_controller like '$filer'";
+		$result2 = $conn->query($sql2);
+		if ($result2->num_rows > 0) {
+			while($row2=$result2->fetch_assoc()) {
+				$filer_used = $row2['used'];
+			}
+		}
+		$percent = $filer_used / $filer_total;
+		if ($percent > .80) {
+	  		$eight = $eight + 1;
+	  	}
+	  	elseif ($percent > .60) {
+	  		$six = $six + 1;
+	  	}
+	  	elseif ($percent > .40) {
+	  		$four = $four + 1;
+	  	}
+	  	elseif ($percent > .20) {
+	  		$two = $two + 1;
+	  	}
+	  	else{
+	  		$zero = $zero + 1;
+	  	} 
+	}
+}
+echo "$eight</td><td>$six</td><td>$four</td><td>$two</td><td>$zero</td>";
 /* This is supposed to be a graph
 $data = array($luns,$shares,$exports);
 
