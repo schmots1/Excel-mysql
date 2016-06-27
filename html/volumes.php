@@ -31,10 +31,10 @@ echo "<td white-space: nowrap>Language</td>";
 echo "<td white-space: nowrap>Vfiler</td>";
 //SQL statements section
 if (!empty($_GET['block'])) {
-$sql = "select storage_controller,aggregate_name,vfiler_name,name,workload,state,block_type,language,files_used,total_used_size_GB,total_luns,total_qtrees,security_style,total_snapmirrors,total_snapvaults from Volumes where `block_type` like $block order by storage_controller, block_type, name";
+$sql = "select * from Volumes where `block_type` like $block order by storage_controller, block_type, name";
 }
 elseif (!empty($_GET['type'])) {
-$sql = "select storage_controller,aggregate_name,vfiler_name,name,workload,state,block_type,language,files_used,total_used_size_GB,total_luns,total_qtrees,total_snapmirrors,security_style,total_snapvaults from Volumes where `type` like 'trad' order by storage_controller, block_type, name";
+$sql = "select * from Volumes where `type` like 'trad' order by storage_controller, block_type, name";
 }
 elseif (!empty($_GET['aggr']) and !empty($_GET['filer'])) {
 $sql = "select * from Volumes where storage_controller like '" . $_GET['filer'] . "'  and aggregate_name like '" . $_GET['aggr'] . "'";
@@ -43,7 +43,7 @@ elseif (!empty($_GET['vfiler']) and !empty($_GET['filer'])) {
 $sql = "select * from Volumes where storage_controller like '" . $_GET['filer'] . "'  and vfiler_name like '" . $_GET['vfiler'] . "'";
 }
 else{
-$sql = "select storage_controller,aggregate_name,vfiler_name,name,workload,state,block_type,language,files_used,total_used_size_GB,total_luns,total_qtrees,total_snapmirrors,security_style,total_snapvaults from Volumes order by storage_controller, block_type, name";
+$sql = "select * from Volumes order by storage_controller, block_type, name";
 }
 // Query output section
 $result = $conn->query($sql);
@@ -64,11 +64,14 @@ echo "<td white-space: nowrap><a href=qtrees.php?database=$dbname&filer=" . $row
 else {
 echo "<td white-space: nowrap>" . $row['total_qtrees'] . "</td>";
 }
-if ($row['total_luns'] > 0) {
-echo "<td white-space: nowrap><a href=luns.php?database=$dbname&filer=" . $row['storage_controller'] . "&vol=" . $row['name'] . ">" . $row['total_luns'] . "</a></td>";
+//if ($row['total_luns'] > 0) {
+if ($row['total_mapped_luns'] > 0) {
+//echo "<td white-space: nowrap><a href=luns.php?database=$dbname&filer=" . $row['storage_controller'] . "&vol=" . $row['name'] . ">" . $row['total_luns'] . "</a></td>";
+echo "<td white-space: nowrap><a href=luns.php?database=$dbname&filer=" . $row['storage_controller'] . "&vol=" . $row['name'] . ">" . $row['total_mapped_luns'] . "</a></td>";
 }
 else {
-echo "<td white-space: nowrap>" . $row['total_luns'] . "</td>";
+//echo "<td white-space: nowrap>" . $row['total_luns'] . "</td>";
+echo "<td white-space: nowrap>" . $row['total_mapped_luns'] . "</td>";
 }
 if ($row['total_snapmirrors'] > 0) {
 echo "<td white-space: nowrap><a href=snapmirrors.php?database=$dbname&filer=" . $row['storage_controller'] . "&vol=" . $row['name'] . ">" . $row['total_snapmirrors'] . "</a></td>";

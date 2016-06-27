@@ -19,17 +19,18 @@ echo "<td>Aggregate</td>";
 echo "<td>Block type</td>";
 echo "<td># Volumes</td>";
 echo "<td>Used Space</td>";
+echo "<td>Free Space</td>";
 echo "</tr>";
 if (empty($_GET['filer'])) {
    if (empty($_GET['block'])) {
-   $sql = "select storage_controller,name,total_used_size_GB,block_type from Aggregates order by storage_controller,block_type,name";
+      $sql = "select * from Aggregates order by storage_controller,block_type,name";
    }
    else {   
-   $sql = "select storage_controller,name,total_used_size_GB,block_type from Aggregates where block_type like $block order by storage_controller,block_type,name";
+      $sql = "select * from Aggregates where block_type like '$block' order by storage_controller,block_type,name";
    }
 }
 else {
-$sql = "select storage_controller,name,total_used_size_GB,block_type from Aggregates where storage_controller like '" .  $_GET['filer'] . "' order by storage_controller,block_type,name";
+  $sql = "select * from Aggregates where storage_controller like '" .  $_GET['filer'] . "' order by storage_controller,block_type,name";
 }
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -49,10 +50,12 @@ else {
 echo "<td>$num_rows</td>";
 }
 echo "<td>" . $row['total_used_size_GB'] . "</td>";
-}
+
+echo "<td>" . $row['total_avil_size_GB'] . "</td>";
+
 echo "</tr>";
 //echo "$result</td>";
-}
+
 else {
 echo "0 results";
 }

@@ -6,6 +6,9 @@
 use Spreadsheet::ParseExcel;
 use FileHandle;
 use strict;
+print "\nNew Project, or Delta?\n";
+print "1. New Project\n";
+print "2. Delta\n";
 print "Name for Database:";
 chomp(my $input = <STDIN>);
 my $database = "up-$input";
